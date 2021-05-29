@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.template import Context, Template
 from django.http import JsonResponse
 import json
 import datetime
+from django.views import generic
 
 def store(request):
 	if request.user.is_authenticated:
@@ -97,3 +98,14 @@ def processOrder(request):
 	else:
 		print('user is not logged in')		
 	return JsonResponse('Payment complete',safe=False)
+
+
+class Productdetail(generic.DetailView):
+	model = Product
+	template_name = 'store/product_detail.html'
+
+def product_detail(request,name):
+	template_name = 'store/product_detail.html'
+	product = get_object_or_404(Product,name=name)
+	return render(request, template_name,{'product':product})
+

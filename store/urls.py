@@ -9,5 +9,5 @@ urlpatterns = [
 	path('checkout/', views.checkout, name="checkout"),
 	path('update_Item/', views.updateItem, name="update_Item"),
 	path('process_Order/', views.processOrder, name="process_Order"),
-
+	path('<slug:name>/', views.product_detail, name="product_detail"),
 ]
