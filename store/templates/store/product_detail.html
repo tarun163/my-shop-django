@@ -1,0 +1,23 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<div class="row">
+
+
+    <div class="">
+        {% if product.image %}
+        <div style="display: flex;">
+
+            <img class="" src="{{product.imageURL}}"> {% endif %}
+            <div class="m-5">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <h4 style="display: inline-block; float: right; margin: 20px;">Price : <strong>${{product.price|floatformat:2}}</strong></h4><br>
+                <button data-product={ {product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+            </div>
+        </div>
+        <h5 style="font-weight: 400; font-family:  sans-serif;">{{product.productDetail}}</h5>
+    </div>
+
+</div>
+
+{% endblock content %}
