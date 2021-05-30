@@ -9,26 +9,59 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type="text/javascript">
         var user = '{{request.user}}'
+
         function getToken(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
             }
+            return cookieValue;
         }
-    }
-    return cookieValue;
-}
-const csrftoken = getToken('csrftoken');
+        const csrftoken = getToken('csrftoken');
     </script>
+    <style>
+        footer {
+            height: 100px;
+            width: 100%;
+            background-color: #4f868c!important;
+        }
+        
+        footer .container h2 {
+            color: deeppink;
+        }
+        
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 22rem;
+        }
+        
+        footer .container .link ul li {
+            text-decoration: none;
+            border: 1px solid grey;
+            border-radius: 50%;
+            margin-left: 2rem;
+            width: 35px;
+        }
+        
+        footer .container .link ul li a {
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: 500;
+            color: aliceblue;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,14 +80,17 @@ const csrftoken = getToken('csrftoken');
                     <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="##">Electronics</a>
+                        <a class="dropdown-item" href="#">fasion</a>
+                        <a class="dropdown-item" href="#">tois</a>
+                        <a class="dropdown-item" href="#">furniture</a>
+                        <a class="dropdown-item" href="#">Vessels</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Something more here</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -68,8 +104,22 @@ const csrftoken = getToken('csrftoken');
 
         </div>
         <div class="form-inline my-2 my-lg-0">
-            <a href="#" class="btn btn-warning">Login</a>
+            <ul class="navbar-nav mr-auto">
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn btn-outline-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong style="color:yellow">Login</strong>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Login</a>
+                        <a class="dropdown-item" href="#">Sign-up</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log-out</a>
+                    </div>
+                </li>
+            </ul>
             <a href="{% url 'cart' %}">
                 <img id="cart-icon" src="{% static 'images/cart.png' %}">
             </a>
@@ -82,7 +132,33 @@ const csrftoken = getToken('csrftoken');
     <div class="container">
         <br> {% block content %} {% endblock content %}
     </div>
+    <hr>
+    <footer>
+        <div class="container text-center ">
+            <h2>Contact Us</h2>
+            <div class="link text-center">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-git"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
 
+                </ul>
+            </div>
+
+            <p>Copyright by tarun kumar</p>
+        </div>
+    </footer>
+
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
