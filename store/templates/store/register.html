@@ -1,0 +1,47 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+
+<style>
+        .container {
+            margin-top: 2rem;
+           width:50%;
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .container h2 {
+            margin: 0rem;
+        }
+    </style>
+
+    {% if success %}
+ <div class="{{class}}">
+ {{messege}}
+ </div>
+ {% endif %}
+   <div class="container shadow">
+        <h2 class="bg-info text-center p-0">Register</h2>
+        <div class="card p-2 m-0">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="m-3">
+                    <label for="username">username</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div class="m-3">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="m-3">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" name="mobile" id="mobile">
+                </div>
+                <button type="submit" class="btn btn-primary m-2">submit</button>
+            </form>
+             <div style="display: flex;">
+                <p>Already have account/</p>
+                <a href="#">login</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
