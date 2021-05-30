@@ -105,7 +105,16 @@ class Productdetail(generic.DetailView):
 	template_name = 'store/product_detail.html'
 
 def product_detail(request,name):
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order,created = Order.objects.get_or_create(customer=customer,complete=False)
+		items = order.orderitem_set.all()
+		cartItems = order.get_cart_items
+	else:
+		items = []
+		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
+		cartItems = order.get_cart_items
 	template_name = 'store/product_detail.html'
 	product = get_object_or_404(Product,name=name)
-	return render(request, template_name,{'product':product})
+	return render(request, template_name,{'product':product,'cartItems':cartItems})
 
