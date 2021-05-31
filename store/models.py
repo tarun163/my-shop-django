@@ -6,6 +6,7 @@ class Customer(models.Model):
     name = models.CharField(null=True, max_length=50)
     email = models.CharField(null=True, max_length=50)
     image = models.ImageField(null=True,blank=True)
+    otp = models.CharField( max_length=50,null=True,blank=True) 
     mobile = models.CharField(max_length=50,null=True,blank=True)
 
     def __str__(self):

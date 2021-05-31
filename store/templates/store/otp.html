@@ -1,0 +1,28 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<style>
+        .container {
+            margin-top: 3rem;
+            width: 50%;
+            font-family: 'Brush Script MT', cursive;
+        }
+        
+        .container h2 {
+            margin: 0rem;
+        }
+    </style>
+      <div class="container shadow">
+        <h2 class="bg-info text-center p-0">Enter otp here</h2>
+        <div class="card p-2 m-0">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="m-3">
+                    <label for="otp">otp</label>
+                    <input type="text" name="otp" id="otp">
+                </div>
+                <button type="submit" class=" btn btn-primary ">submit</button>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}
