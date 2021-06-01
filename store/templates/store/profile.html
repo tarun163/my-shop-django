@@ -1,0 +1,35 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<style>
+    .user-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 1px solid grey;
+    }
+</style>
+<div class="row">
+
+
+    <div class="">
+        {% if customer.image %}
+        <div style="display: flex;">
+
+            <img class="user-image" src="{{customer.image.url}}"> {% endif %}
+
+            <div class="m-5">
+                <h6><strong>{{customer.name}}</strong></h6>
+                <hr>
+
+            </div>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*"> <button type="submit">submit</button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}

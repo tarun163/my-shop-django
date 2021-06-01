@@ -114,7 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+AUTH_KEY = '361051AhhnI7OnYCmJ60a64eb3P1'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 

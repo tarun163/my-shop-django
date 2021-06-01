@@ -55,6 +55,11 @@
             width: 35px;
         }
         
+        footer .container .link ul li :hover {
+            color: rgb(104, 74, 211);
+            transition: all .6s;
+        }
+        
         footer .container .link ul li a {
             text-decoration: none;
             font-size: 25px;
@@ -84,8 +89,9 @@
           Products
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="##">Electronics</a>
+                        <a class="dropdown-item" href="#">Electronics</a>
                         <a class="dropdown-item" href="#">fasion</a>
+                        <a class="dropdown-item" href="#">vehicle</a>
                         <a class="dropdown-item" href="#">tois</a>
                         <a class="dropdown-item" href="#">furniture</a>
                         <a class="dropdown-item" href="#">Vessels</a>
@@ -111,12 +117,11 @@
                         <strong style="color:yellow">Login</strong>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Sign-up</a>
-
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'login_attampt' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'register' %}">Sign-up</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log-out</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log-out</a>
                     </div>
                 </li>
             </ul>
@@ -133,6 +138,7 @@
         <br> {% block content %} {% endblock content %}
     </div>
     <hr>
+
     <footer>
         <div class="container text-center ">
             <h2>Contact Us</h2>
