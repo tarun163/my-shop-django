@@ -18,8 +18,7 @@ def store(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = order.get_cart_items
-
+		cartItems = 0
 	
 	return render(request, 'store/store.html', context = {'products':Product.objects.all(),'cartItems':cartItems})
 
@@ -33,7 +32,8 @@ def cart(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = order.get_cart_items
+		cartItems = 0
+		return redirect('login_attampt')
 	context = {'items':items,'order':order,'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
 
@@ -46,7 +46,7 @@ def checkout(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = order.get_cart_items
+		cartItems = 0
 	context = {'items':items,'order':order,'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
 
@@ -168,7 +168,7 @@ def login_attampt(request):
          request.session['mobile'] = mobile
          return redirect('login_otp')
   
-    return render(request,'store/login.html')
+    return render(request,'store/login.html',{'cartItems':0})
 
 def logout(request):
 	return render(request,'store/store.html')
