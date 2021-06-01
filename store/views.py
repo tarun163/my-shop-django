@@ -18,7 +18,7 @@ def store(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = 0
+		cartItems = order.get_cart_items
 	
 	return render(request, 'store/store.html', context = {'products':Product.objects.all(),'cartItems':cartItems})
 
@@ -32,7 +32,7 @@ def cart(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = 0
+		cartItems = order.get_cart_items
 		return redirect('login_attampt')
 	context = {'items':items,'order':order,'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
@@ -46,7 +46,7 @@ def checkout(request):
 	else:
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
-		cartItems = 0
+		cartItems = order['get_cart_item']
 	context = {'items':items,'order':order,'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
 
@@ -224,7 +224,7 @@ def login_otp(request):
                 'messege':'Welcome',
                 'class':'alert-success'
             }
-            return redirect('store')    
+            return render(request,'store/store.html',context)    
     return render(request,'store/login_otp.html',context)  
 
 def send_otp(mobile,otp):

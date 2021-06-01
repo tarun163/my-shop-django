@@ -1,12 +1,26 @@
 {% extends 'store/main.html' %} {% load static %} {% block content %}
-<div class="row">
+<style>
+    .product_detail {}
+    
+    .product {
+        border: 1px solid grey;
+    }
+    
+    .product:hover {
+        border: none;
+        height: 600px;
+        width: 600px;
+    }
+</style>
+
+<div class="product_detail">
 
 
     <div class="">
         {% if product.image %}
         <div style="display: flex;">
 
-            <img class="" src="{{product.imageURL}}"> {% endif %}
+            <img class="product" src="{{product.imageURL}}"> {% endif %}
             <div class="m-5">
                 <h6><strong>{{product.name}}</strong></h6>
                 <hr>
