@@ -147,7 +147,7 @@ def register(request):
             }
             return render(request,'store/register.html',context)
                 
-    return render(request,'store/register.html')        
+    return render(request,'store/register.html',{'cartItems':0})        
 
 def login_attampt(request):
 
@@ -240,6 +240,15 @@ def send_otp(mobile,otp):
     return None
 
 def Type_of_product(request,name):
-	print(name)
-	product = Product.objects.filter(modeltype=name)
-	return render(request,'store/productType.html',{'product':product,'cartItems':0})
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order,created = Order.objects.get_or_create(customer=customer,complete=False)
+		items = order.orderitem_set.all()
+		cartItems = order.get_cart_items
+	else:
+		items = []
+		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
+		cartItems = order.get_cart_items
+	products = Product.objects.filter(modeltype=name)	
+	print(products)
+	return render(request,'store/productType.html',{'products':products,'cartItems':cartItems})

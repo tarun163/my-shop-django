@@ -58,7 +58,7 @@
         
         footer .container .link ul li :hover {
             color: rgb(104, 74, 211);
-            transition: all .6s;
+            transition: all .3s;
         }
         
         footer .container .link ul li a {
@@ -90,14 +90,14 @@
           Products
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Electronics</a>
-                        <a class="dropdown-item" href="{% url 'Type_of_product' fashion %}">fashion</a>
-                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">vehicle</a>
-                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">tois</a>
-                         <a class="dropdown-item" href="{% url 'Type_of_product' %}">furniture</a>
-                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Vessels</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'electronic' %}">Electronics</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'fashion' %}">fashion</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'vehicle'%}">vehicle</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'tois'%}">tois</a>
+                         <a class="dropdown-item" href="{% url 'Type_of_product' 'furniture'%}">furniture</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'vessels'%}">Vessels</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Something more here</a>
+                        <a class="dropdown-item" href="#">Something more here</a>
                     </div>
                 </li>
                 <li class="nav-item">
