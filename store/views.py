@@ -238,3 +238,8 @@ def send_otp(mobile,otp):
     data = res.read()
     print(data)
     return None
+
+def Type_of_product(request,name):
+	print(name)
+	product = Product.objects.filter(modeltype=name)
+	return render(request,'store/productType.html',{'product':product,'cartItems':0})

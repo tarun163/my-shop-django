@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
     <script type="text/javascript">
         var user = '{{request.user}}'
 
@@ -89,14 +90,14 @@
           Products
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Electronics</a>
-                        <a class="dropdown-item" href="#">fasion</a>
-                        <a class="dropdown-item" href="#">vehicle</a>
-                        <a class="dropdown-item" href="#">tois</a>
-                        <a class="dropdown-item" href="#">furniture</a>
-                        <a class="dropdown-item" href="#">Vessels</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Electronics</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' fashion %}">fashion</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">vehicle</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">tois</a>
+                         <a class="dropdown-item" href="{% url 'Type_of_product' %}">furniture</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Vessels</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something more here</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' %}">Something more here</a>
                     </div>
                 </li>
                 <li class="nav-item">
