@@ -14,6 +14,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name = models.CharField(null=True, max_length=50) 
+    modeltype = models.CharField(null=True, max_length=50) 
     price = models.FloatField()
     productDetail = models.TextField(null=True,blank=True)
     degital = models.BooleanField(default=False,null=True,blank=False)
@@ -82,3 +83,4 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.customer or ''
+        

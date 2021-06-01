@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
 	#Leave as empty string for base url
 	path('', views.store, name="store"),
+	path('product/<slug:name>/', views.Type_of_product, name="Type_of_product"),
 	path('register/', views.register, name="register"),
 	path('profile/', views.profile, name="profile"),
 	path('login_otp/', views.login_otp, name='login_otp'),
