@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import *
+from .models import Order,Product,Customer,User,OrderItem,ShippingAddress
 from django.template import Context, Template
 from django.http import JsonResponse
 import json
 import datetime
+from django.contrib import messages
 import random
 import http.client
 from django.views import generic
@@ -69,9 +70,10 @@ def updateItem(request):
 		orderItem.quantity = (orderItem.quantity - 1)
 
 	orderItem.save()
+	messages.success(request,f'item added')
 	if orderItem.quantity<=0:
 		orderItem.delete()
-  
+    
 	return JsonResponse('item was added',safe=False)
 
 def processOrder(request):
@@ -120,7 +122,6 @@ def product_detail(request,name):
 	template_name = 'store/product_detail.html'
 	product = get_object_or_404(Product,name=name)
 	return render(request, template_name,{'product':product,'cartItems':cartItems})
-
 	
 
 def register(request):
@@ -150,7 +151,7 @@ def register(request):
     return render(request,'store/register.html',{'cartItems':0})        
 
 def login_attampt(request):
-
+    
     if request.method == 'POST':
          mobile = request.POST.get('mobile')
          verify = Customer.objects.filter(mobile = mobile).first()
@@ -181,9 +182,10 @@ def profile(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 		if request.method == "POST":
-			image = request.FILES.get('img')
+			image = request.POST.get('img')
 			print(image)
 			customer.image = image
+			customer.save()
 	else: 
 		items = []
 		order = {'get_cart_total':0, 'get_cart_item':0,'shipping':False}
@@ -199,14 +201,8 @@ def otp(request):
         
         #print(Customer.mobile)
         if verify:
-            context = {
-                'success':True,
-                'messege':'Welcome',
-                'class':'alert-success'
-            }
-            return render(request,'store/store.html',context)         
-
-    return render(request,'store/otp.html',)  
+            return redirect('store')  	       
+    return render(request,'store/otp.html',{'mobile':request.session['mobile']})  
 
 def login_otp(request):
     mobile = request.session['mobile']
@@ -217,14 +213,11 @@ def login_otp(request):
 		
         verify = Customer.objects.filter(otp = otp,mobile=mobile).first()
         print(mobile)
-        print(otp)
-        if verify is not None:		    
-            context = {
-                'success':True,
-                'messege':'Welcome',
-                'class':'alert-success'
-            }
-            return render(request,'store/store.html',context)    
+        	
+        if verify:	
+		
+            return redirect('store') 
+			  
     return render(request,'store/login_otp.html',context)  
 
 def send_otp(mobile,otp):
