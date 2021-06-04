@@ -1,4 +1,4 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %} {% block title %}login-page{% endblock title %} {% block content %}
  <style>
         .container {
             margin-top: 2rem;
@@ -10,11 +10,12 @@
             margin: 0rem;
         }
     </style>
-      {% if success %}
-    <div class="{{class}}">
-        {{messege}} {% endif %}
+     
         <div class="container shadow">
             <h2 class="bg-info text-center p-0">login</h2>
+             {% if success %}
+    <div class="{{class}}">
+        {{messege}} {% endif %}
             <div class="card p-2 m-0">
                 <form action="" method="POST">
                     {% csrf_token %}

@@ -1,4 +1,4 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %}{% block title %}user-registretion-otp-here{% endblock title %}  {% block content %}
 <style>
         .container {
             margin-top: 3rem;
@@ -10,8 +10,12 @@
             margin: 0rem;
         }
     </style>
+     {% if success %}
+    <div class="{{class}}">
+        {{messege}} {% endif %}
+        <h2 class="bg-info text-center p-0">Enter otp here{{mobile}}</h2>
       <div class="container shadow">
-        <h2 class="bg-info text-center p-0">Enter otp here</h2>
+        <h2 class="bg-info text-center p-0">Enter otp here {{mobile}}</h2>
         <div class="card p-2 m-0">
 
             <form action="" method="POST">

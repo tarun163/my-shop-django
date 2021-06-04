@@ -2,7 +2,10 @@
 <html>
 
 <head>
-    <title>Ecom</title>
+    <title>
+
+        {% block title %}{% endblock title %}
+    </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
@@ -10,7 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    
+
     <script type="text/javascript">
         var user = '{{request.user}}'
 
@@ -94,7 +97,7 @@
                         <a class="dropdown-item" href="{% url 'Type_of_product' 'fashion' %}">fashion</a>
                         <a class="dropdown-item" href="{% url 'Type_of_product' 'vehicle'%}">vehicle</a>
                         <a class="dropdown-item" href="{% url 'Type_of_product' 'tois'%}">tois</a>
-                         <a class="dropdown-item" href="{% url 'Type_of_product' 'furniture'%}">furniture</a>
+                        <a class="dropdown-item" href="{% url 'Type_of_product' 'furniture'%}">furniture</a>
                         <a class="dropdown-item" href="{% url 'Type_of_product' 'vessels'%}">Vessels</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something more here</a>

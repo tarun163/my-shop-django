@@ -1,4 +1,4 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %}{% block title %}registretion-page{% endblock title %} {% block content %}
 
 <style>
         .container {
@@ -12,13 +12,14 @@
         }
     </style>
 
+   <div class="container shadow">
+        <h2 class="bg-info text-center p-0">Register</h2>
+        
     {% if success %}
  <div class="{{class}}">
  {{messege}}
  </div>
  {% endif %}
-   <div class="container shadow">
-        <h2 class="bg-info text-center p-0">Register</h2>
         <div class="card p-2 m-0">
 
             <form action="" method="POST">

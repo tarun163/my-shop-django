@@ -1,8 +1,20 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %}{% block title %}welcome-User{% endblock title %} {% block content %}
 <style>
 
 </style>
-<div class="" style="width: 1530px; margin-left: -12rem; ">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".update-cart").click(function(){
+    alert("The item is added in your cart successfully");
+  });
+});
+</script>
+</head>
+<body>
+
+
+<div class="" style="width: 1520px; margin-left: -13rem; ">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

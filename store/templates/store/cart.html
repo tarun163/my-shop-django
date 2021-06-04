@@ -1,6 +1,21 @@
 {% extends 'store/main.html' %}
 {% load static %}
+{% block title %}Cart-page{% endblock title %} 
 {% block content %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".add").click(function(){
+    alert("The item is added in your cart successfully");
+  });
+  $(".remove").click(function(){
+    alert("The item is removed in your cart successfully");
+  });
+});
+</script>
+</head>
+<body>
+
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="box-element">
@@ -34,14 +49,14 @@
 				
 				<div class="cart-row">
 					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
-					<div style="flex:2"><p>{{item.product.name}}</p></div>
+					<div style="flex:2"><a class="" href="{% url 'product_detail' item.product.name %}">{{item.product.name}}</a></div>
 					<div style="flex:1"><p>{{item.product.price|floatformat:2}}</p></div>
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img data-product="{{item.product.id}}"data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+							<img data-product="{{item.product.id}}"data-action="add" class="chg-quantity update-cart add" src="{% static  'images/arrow-up.png' %}">
 					
-							<img data-product="{{item.product.id}}"data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+							<img data-product="{{item.product.id}}"data-action="remove" class="chg-quantity update-cart remove" src="{% static  'images/arrow-down.png' %}">
 						</div>
 					</div>
 					<div style="flex:1"><p>{{item.get_total}}</p></div>
