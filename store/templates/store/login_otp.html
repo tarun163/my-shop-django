@@ -11,6 +11,18 @@ login-page{% endblock title %} {% block content %}
         .container h2 {
             margin: 0rem;
         }
+         @media screen and (max-width: 1024px) {
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 7rem;
+        }
+        .container {
+            margin-top: 2rem;
+            width: 60%;
+            font-family: 'Brush Script MT', cursive;
+        }
+    }
     </style>
      {% if success %}
     <div class="{{class}}">

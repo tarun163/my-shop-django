@@ -1,38 +1,56 @@
 {% extends 'store/main.html' %} {% load static %} {% block title %}Product/{{product.name}}{% endblock title %} {% block content %}
 <style>
-   
+    @media screen and (max-width: 1024px) {
+        .carousel {
+            width: 1186px;
+            margin-left: 0rem;
+        }
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 17rem;
+        }
+        .h4,
+        h4 {
+            font-size: 1rem;
+        }
+        .p-3 {
+            padding: .7rem!important;
+        }
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-  $(".update-cart").click(function(){
-    alert("The item is added in your cart successfully");
-  });
-});
+    $(document).ready(function() {
+        $(".update-cart").click(function() {
+            alert("The item is added in your cart successfully");
+        });
+    });
 </script>
 </head>
+
 <body>
 
 
-<div class="product_detail">
+    <div class="product_detail">
 
 
-    <div class="">
-        {% if product.image %}
-        <div style="display: flex;">
+        <div class="">
+            {% if product.image %}
+            <div style="display: flex;">
 
-            <img class="product" src="{{product.imageURL}}"> {% endif %}
-            <div class="m-5">
-                <h6><strong>{{product.name}}</strong></h6>
-                <hr>
-                <h4 style="display: inline-block; float: right; margin: 20px;">Price : <strong>${{product.price|floatformat:2}}</strong></h4><br>
-                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart alert">Add to Cart</button>
+                <img class="product" src="{{product.imageURL}}"> {% endif %}
+                <div class="m-5">
+                    <h6><strong>{{product.name}}</strong></h6>
+                    <hr>
+                    <h4 style="display: inline-block; float: right; margin: 20px;">Price : <strong>${{product.price|floatformat:2}}</strong></h4><br>
+                    <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart alert">Add to Cart</button>
 
+                </div>
             </div>
+            <h5 style="font-weight: 400; font-family:  sans-serif;">{{product.productDetail}}</h5>
         </div>
-        <h5 style="font-weight: 400; font-family:  sans-serif;">{{product.productDetail}}</h5>
+
     </div>
 
-</div>
-
-{% endblock content %}
+    {% endblock content %}
