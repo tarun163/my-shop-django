@@ -200,7 +200,7 @@ def otp(request):
         otp = request.POST.get('otp')
         verify = Customer.objects.filter(otp = otp ).first()
         
-        #print(Customer.mobile)
+       
         if verify:
             return redirect('store')  	       
     return render(request,'store/otp.html',{'mobile':request.session['mobile']})  
