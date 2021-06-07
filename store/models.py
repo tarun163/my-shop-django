@@ -15,7 +15,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(null=True, max_length=50) 
     modeltype = models.CharField(null=True, max_length=50) 
-    price = models.FloatField()
+    price = models.DecimalField( max_digits=7, decimal_places=2)
     productDetail = models.TextField(null=True,blank=True)
     degital = models.BooleanField(default=False,null=True,blank=False)
     image = models.ImageField(null=True,blank=True)
