@@ -6,3 +6,6 @@ firstly user can register by username ,mobile and email then program will genera
 then user can login by mobile number and otp 
 the features of this side taken by many online resorces.
 this side is fully responsive for mobile,ipad and laptop
+
+this side has real time payment intrigation with paypal
+
