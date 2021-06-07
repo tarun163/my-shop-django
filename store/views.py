@@ -99,6 +99,7 @@ def processOrder(request):
 				state=data['shipping']['state'],
 				zipcode=data['shipping']['zipcode'],
 			)
+			
 
 	else:
 		print('user is not logged in')		

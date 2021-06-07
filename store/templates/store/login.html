@@ -1,35 +1,51 @@
 {% extends 'store/main.html' %} {% load static %} {% block title %}login-page{% endblock title %} {% block content %}
- <style>
+<style>
+    .container {
+        margin-top: 2rem;
+        width: 50%;
+        font-family: 'Brush Script MT', cursive;
+    }
+    
+    .container h2 {
+        margin: 0rem;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .profile {
+            margin-left: 3rem;
+        }
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 7rem;
+        }
         .container {
             margin-top: 2rem;
-            width: 50%;
+            width: 60%;
             font-family: 'Brush Script MT', cursive;
         }
-        
-        .container h2 {
-            margin: 0rem;
-        }
-    </style>
-     
-        <div class="container shadow">
-            <h2 class="bg-info text-center p-0">login</h2>
-             {% if success %}
+    }
+</style>
+
+<div class="container shadow">
+    <h2 class="bg-info text-center p-0">login</h2>
+    {% if success %}
     <div class="{{class}}">
         {{messege}} {% endif %}
-            <div class="card p-2 m-0">
-                <form action="" method="POST">
-                    {% csrf_token %}
+        <div class="card p-2 m-0">
+            <form action="" method="POST">
+                {% csrf_token %}
 
-                    <div class="m-3"><label for="mobile">mobile</label>
-                        <input type="text" name="mobile" id="mobile">
-                    </div>
-                    <button type="submit" class=" btn btn-primary m-2">submit</button>
-                </form>
-                <div style="display: flex;">
-                    <p>Create Account/</p>
-                    <a href="{% url 'register' %}">Register</a>
+                <div class="m-3"><label for="mobile">mobile</label>
+                    <input type="text" name="mobile" id="mobile">
                 </div>
+                <button type="submit" class=" btn btn-primary m-2">submit</button>
+            </form>
+            <div style="display: flex;">
+                <p>Create Account/</p>
+                <a href="{% url 'register' %}">Register</a>
             </div>
         </div>
+    </div>
 
-{% endblock content %}
+    {% endblock content %}
