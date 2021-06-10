@@ -1,9 +1,7 @@
-{% extends 'store/main.html' %} {% load static %} {% block title %}
-login-page{% endblock title %} {% block content %}
-
+{% extends 'store/main.html' %} {% load static %}{% block title %}user-registretion-otp-here{% endblock title %}  {% block content %}
 <style>
         .container {
-            margin-top: 2rem;
+            margin-top: 3rem;
             width: 50%;
             font-family: 'Brush Script MT', cursive;
         }
@@ -24,17 +22,25 @@ login-page{% endblock title %} {% block content %}
         }
     }
     </style>
-     {% if success %}
+    
+        <h2 class=" text-center p-0">chenge your here{{mobile}}</h2>
+      <div class="container shadow">
+        <h2 class="bg-info text-center p-0">Enter details</h2>
+         {% if success %}
     <div class="{{class}}">
-        {{messege}} {% endif %}
- <h2 class="text-center p-0">Enter otp here {{mobile}}</h2>
-     <div class="container shadow">
-        <h2 class="bg-info text-center p-0">Enter otp</h2>
+        {{message}} {% endif %}
         <div class="card p-2 m-0">
 
             <form action="" method="POST">
                 {% csrf_token %}
-
+                <div class="m-3">
+                    <label for="password1">new password</label>
+                    <input type="password" name="password1" id="password1">
+                </div>
+                <div class="m-3">
+                    <label for="password2">confirm password</label>
+                    <input type="password" name="password2" id="password2">
+                </div>
                 <div class="m-3">
                     <label for="otp">otp</label>
                     <input type="text" name="otp" id="otp">
@@ -43,6 +49,4 @@ login-page{% endblock title %} {% block content %}
             </form>
         </div>
     </div>
-
-
-{% endblock content %}
+    {% endblock content %}

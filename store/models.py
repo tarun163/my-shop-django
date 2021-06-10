@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+import random
+
+
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null = True,blank=True, on_delete=models.CASCADE)
@@ -10,7 +13,7 @@ class Customer(models.Model):
     mobile = models.CharField(max_length=50,null=True,blank=True)
 
     def __str__(self):
-        return self.name or 'tarun'
+        return self.name or ''
 
 class Product(models.Model):
     name = models.CharField(null=True, max_length=50) 
@@ -18,7 +21,7 @@ class Product(models.Model):
     price = models.DecimalField( max_digits=7, decimal_places=2)
     productDetail = models.TextField(null=True,blank=True)
     degital = models.BooleanField(default=False,null=True,blank=False)
-    image = models.ImageField(null=True,blank=True)
+    image = models.ImageField(null=True,blank=True,)
     def __str__(self):
         return self.name or ''
 
@@ -34,7 +37,7 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True,null=True)
     date_order = models.DateTimeField( auto_now_add=True)
     complete =  models.BooleanField(default=False,null=True,blank=False)
-    transaction_id = models.CharField( max_length=200,null=True)
+    transaction_id = models.CharField(max_length=10,null=True, unique=True, editable=False, default=str(random.randint(1000000000, 9999999999)))
  
     def __str__(self):
         return self.transaction_id or ''
@@ -65,7 +68,8 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=True,blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
-    
+    def __str__(self):
+        return self.product.name or ''
 
     @property
     def get_total(self):

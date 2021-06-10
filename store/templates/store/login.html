@@ -31,15 +31,21 @@
     <h2 class="bg-info text-center p-0">login</h2>
     {% if success %}
     <div class="{{class}}">
-        {{messege}} {% endif %}
+        {{message}} {% endif %}
         <div class="card p-2 m-0">
             <form action="" method="POST">
                 {% csrf_token %}
 
-                <div class="m-3"><label for="mobile">mobile</label>
-                    <input type="text" name="mobile" id="mobile">
+                <div class="m-3">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div class="m-3">
+                    <label for="password">password</label>
+                    <input type="password" name="password" id="password">
                 </div>
                 <button type="submit" class=" btn btn-primary m-2">submit</button>
+                 <a href="{% url 'forget_password' %}">forget-password</a>
             </form>
             <div style="display: flex;">
                 <p>Create Account/</p>
